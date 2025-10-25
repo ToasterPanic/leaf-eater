@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://bl6p3w2qfx61t"]
+
+[ext_resource type="Script" uid="uid://b1pc5bt43j6lo" path="res://scripts/seeking_mine.gd" id="1_yq2i2"]
+[ext_resource type="Texture2D" uid="uid://6du6wichqbc6" path="res://images/seeking_mine.png" id="1_yrycu"]
+[ext_resource type="Texture2D" uid="uid://7mr1psebbpew" path="res://images/seeking_mine_detected.png" id="2_yq2i2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7f7hy"]
+radius = 24.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r8gwa"]
+radius = 512.0
+
+[node name="SeekingMine" type="RigidBody2D"]
+linear_damp = 2.5
+angular_damp = 2.5
+script = ExtResource("1_yq2i2")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_yrycu")
+
+[node name="Detected" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_yq2i2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7f7hy")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_r8gwa")

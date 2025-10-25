@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready var world = get_parent()
+
 func _process(delta: float) -> void:
 	look_at(get_global_mouse_position())
 	
@@ -17,8 +19,9 @@ func _process(delta: float) -> void:
 		
 	for n in $Suction.get_overlapping_bodies():
 		if n.has_meta("leaf"):
-			n.linear_velocity = (self.position - n.position).normalized() * min(512 - (n.position - self.position).length(), 512)
+			n.linear_velocity = ((self.position - n.position).normalized() * min(728 - (n.position - self.position).length(), 728)) * 0.5
 			if (n.position - self.position).length() < 76:
 				n.queue_free()
+				world.timeLeft += 0.25
 	
 	move_and_slide()
