@@ -1,0 +1,61 @@
+[gd_scene load_steps=11 format=4 uid="uid://c47q560700xwg"]
+
+[ext_resource type="Texture2D" uid="uid://dvd22oup8h6t3" path="res://images/player.png" id="1_uwrxv"]
+[ext_resource type="Script" uid="uid://bp1y7fxh441lf" path="res://scripts/player.gd" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://x1lb2h68j1fm" path="res://scenes/leaf.tscn" id="3_lnu2h"]
+[ext_resource type="Texture2D" uid="uid://c3al2fxy6ylg4" path="res://images/grass.png" id="4_iywne"]
+[ext_resource type="Texture2D" uid="uid://cbdtvfbhjqwhu" path="res://images/wall.png" id="5_p57ef"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_u5sy4"]
+texture = ExtResource("4_iywne")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gee14"]
+texture = ExtResource("5_p57ef")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+
+[sub_resource type="TileSet" id="TileSet_0tnpc"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_u5sy4")
+sources/1 = SubResource("TileSetAtlasSource_gee14")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8cj0n"]
+radius = 32.0
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_uwrxv"]
+points = PackedVector2Array(0, 0, 99999, 99999, 99999, -99999)
+
+[node name="Game" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+scale = Vector2(0.5, 0.5)
+tile_map_data = PackedByteArray("AAD/////AAAAAAAAAAD//wAAAAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAAAAAD9//3/AAAAAAAAAAD9//7/AAAAAAAAAAD9////AAAAAAAAAAD9/wAAAAAAAAAAAAD9/wEAAAAAAAAAAAD9/wIAAAAAAAAAAAD+//3/AAAAAAAAAAD+//7/AAAAAAAAAAD+////AAAAAAAAAAD+/wAAAAAAAAAAAAD+/wEAAAAAAAAAAAD+/wIAAAAAAAAAAAD///3/AAAAAAAAAAD///7/AAAAAAAAAAD//wEAAAAAAAAAAAD//wIAAAAAAAAAAAAAAP3/AAAAAAAAAAAAAP7/AAAAAAAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAABAP3/AAAAAAAAAAABAP7/AAAAAAAAAAABAP//AAAAAAAAAAABAAAAAAAAAAAAAAABAAEAAAAAAAAAAAABAAIAAAAAAAAAAAACAP3/AAAAAAAAAAACAP7/AAAAAAAAAAACAP//AAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAD8//z/AQAAAAAAAAD8//3/AQAAAAAAAAD8//7/AQAAAAAAAAD8////AQAAAAAAAAD8/wAAAQAAAAAAAAD8/wEAAQAAAAAAAAD8/wIAAQAAAAAAAAD8/wMAAQAAAAAAAAD9//z/AQAAAAAAAAD+//z/AQAAAAAAAAD///z/AQAAAAAAAAAAAPz/AQAAAAAAAAABAPz/AQAAAAAAAAACAPz/AQAAAAAAAAADAPz/AQAAAAAAAAADAP3/AQAAAAAAAAADAP7/AQAAAAAAAAADAAEAAQAAAAAAAAADAAIAAQAAAAAAAAADAAMAAQAAAAAAAAD9/wMAAQAAAAAAAAD+/wMAAQAAAAAAAAD//wMAAQAAAAAAAAAAAAMAAQAAAAAAAAABAAMAAQAAAAAAAAACAAMAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_0tnpc")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("1_yqjtg")
+
+[node name="Sprite" type="Sprite2D" parent="Player"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_uwrxv")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CircleShape2D_8cj0n")
+
+[node name="Suction" type="Area2D" parent="Player"]
+
+[node name="Shape" type="CollisionShape2D" parent="Player/Suction"]
+shape = SubResource("ConvexPolygonShape2D_uwrxv")
+
+[node name="Leaf" parent="." instance=ExtResource("3_lnu2h")]
+position = Vector2(329, -135)
+linear_damp = 4.0
+
+[node name="Leaf2" parent="." instance=ExtResource("3_lnu2h")]
+position = Vector2(329, -135)
