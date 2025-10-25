@@ -1,21 +1,23 @@
 extends CharacterBody2D
 
 @onready var world = get_parent()
+var dead = false
 
 func _process(delta: float) -> void:
 	look_at(get_global_mouse_position())
 	
 	velocity = Vector2(0, 0)
 	
-	if Input.is_action_pressed("move_up"):
-		velocity.y -= 256
-	if Input.is_action_pressed("move_down"):
-		velocity.y += 256
-		
-	if Input.is_action_pressed("move_left"):
-		velocity.x -= 256
-	if Input.is_action_pressed("move_right"):
-		velocity.x += 256
+	if !dead:
+		if Input.is_action_pressed("move_up"):
+			velocity.y -= 256
+		if Input.is_action_pressed("move_down"):
+			velocity.y += 256
+			
+		if Input.is_action_pressed("move_left"):
+			velocity.x -= 256
+		if Input.is_action_pressed("move_right"):
+			velocity.x += 256
 		
 	for n in $Suction.get_overlapping_bodies():
 		if n.has_meta("leaf"):

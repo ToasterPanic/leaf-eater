@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 			$Line.width = (1 - timeUntilShot) * 32
 			
 			if timeUntilShot <= 0:
-				n.queue_free()
+				n.get_parent().timeLeft = 0
 			
 			return
 			
