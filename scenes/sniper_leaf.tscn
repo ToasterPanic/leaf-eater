@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://d06bqlk51flo5"]
+[gd_scene load_steps=8 format=3 uid="uid://d06bqlk51flo5"]
 
 [ext_resource type="Texture2D" uid="uid://c3d47tfddeetb" path="res://images/leaf.png" id="1_vdguk"]
 [ext_resource type="Script" uid="uid://bx742u4ge11lm" path="res://scripts/sniper_leaf.gd" id="2_b2la4"]
 [ext_resource type="Texture2D" uid="uid://cm8makvpuhot2" path="res://images/gun.png" id="3_1egcd"]
+[ext_resource type="AudioStream" uid="uid://outf3dat7p4n" path="res://sounds/charge_fire.mp3" id="3_b2la4"]
+[ext_resource type="Texture2D" uid="uid://c3f27uoir15yi" path="res://images/sniper_zone.png" id="5_1egcd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0tnpc"]
 radius = 1600.0
@@ -16,10 +18,17 @@ scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_vdguk")
 script = ExtResource("2_b2la4")
 
+[node name="ChargeFire" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_b2la4")
+autoplay = true
+
 [node name="Rifle" type="Sprite2D" parent="."]
 position = Vector2(-80, 24)
 scale = Vector2(2, 2)
 texture = ExtResource("3_1egcd")
+
+[node name="Indicator" type="Sprite2D" parent="."]
+texture = ExtResource("5_1egcd")
 
 [node name="Area" type="Area2D" parent="."]
 

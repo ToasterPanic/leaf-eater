@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 
+[gui]
+
+theme/custom="uid://coikh1aalms22"
+theme/custom_font="uid://bgr44hmc24iso"
+
 [input]
 
 move_up={
@@ -50,3 +55,4 @@ move_right={
 [rendering]
 
 renderer/rendering_method="mobile"
+environment/defaults/default_clear_color=Color(0.11764706, 0.09411765, 0.07058824, 1)

@@ -1,6 +1,10 @@
 extends RigidBody2D
 
 func _process(delta: float) -> void:
+	for n in $HitArea.get_overlapping_bodies():
+		if n.get_name() == "Player":
+			n.get_parent().timeLeft = 0
+			
 	for n in $DetectionArea.get_overlapping_bodies():
 		if n.get_name() == "Player":
 			$Detected.visible = true

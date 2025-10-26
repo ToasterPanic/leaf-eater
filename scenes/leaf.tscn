@@ -1,6 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://x1lb2h68j1fm"]
+[gd_scene load_steps=6 format=3 uid="uid://x1lb2h68j1fm"]
 
 [ext_resource type="Texture2D" uid="uid://c3d47tfddeetb" path="res://images/leaf.png" id="1_wmchb"]
+[ext_resource type="Script" uid="uid://dwyiskofdcs5q" path="res://scripts/leaf.gd" id="1_y2xad"]
+[ext_resource type="Texture2D" uid="uid://b876bbp5e8mmf" path="res://images/leaf_red.png" id="2_h5d7w"]
+[ext_resource type="Texture2D" uid="uid://c5wlqlv8t4f0w" path="res://images/leaf_yellow.png" id="4_nx2nx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lnu2h"]
 radius = 12.0
@@ -8,11 +11,20 @@ radius = 12.0
 [node name="Leaf" type="RigidBody2D"]
 linear_damp = 2.5
 angular_damp = 2.5
+script = ExtResource("1_y2xad")
 metadata/leaf = false
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[node name="Red" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_h5d7w")
+
+[node name="Orange" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_wmchb")
+
+[node name="Yellow" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_nx2nx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_lnu2h")
