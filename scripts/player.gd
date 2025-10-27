@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var world = get_parent()
 var dead = false
+var win = false
 
 func _process(delta: float) -> void:
 	look_at(get_global_mouse_position())
@@ -29,7 +30,7 @@ func _process(delta: float) -> void:
 			sucking = true
 			
 			n.linear_velocity = ((self.position - n.position).normalized() * min(728 - (n.position - self.position).length(), 728)) * 0.5
-			if (n.position - self.position).length() < 96:
+			if (n.position - self.position).length() < 82:
 				n.queue_free()
 				world.timeLeft += 0.333
 				$Crunch.play()

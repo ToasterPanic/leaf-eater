@@ -1,4 +1,10 @@
-# leaf-eater
+# LEAF EATER
+
+Avoid hazards and race against the clock to reach the Everlasting Tree of Leaves, all while fending off your... explosive leaf addiction.
+
+### Try it out here!
+
+## Credits
 
 Music by tomomi_kato on Pixabay
 

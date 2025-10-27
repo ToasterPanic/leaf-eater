@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 			
 			$Line.points[0].x = -(n.position - position).length() * 4
 			$Line2.points = $Line.points
-			$Line.width = (1 - timeUntilShot) * 32
+			$Line.width = (1 - timeUntilShot) * 64
 			
 			if timeUntilShot <= 0:
 				n.get_parent().timeLeft = 0

@@ -4,6 +4,18 @@ var goingUp = false
 var lastTouch = 0
 @onready var mainX = global_position.x
 
+func _ready() -> void:
+	var color = randi_range(1, 5)
+	
+	if color == 2:
+		$Blue.visible = true
+	elif color == 3:
+		$Green.visible = true
+	elif color == 4:
+		$Magenta.visible = true
+	elif color == 5:
+		$Yellow.visible = true
+
 func _process(delta) -> void:
 	global_position.x = mainX
 	velocity.x = 0

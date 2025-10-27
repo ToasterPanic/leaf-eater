@@ -1,7 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bc5o0fxxy5onh"]
+[gd_scene load_steps=9 format=3 uid="uid://bc5o0fxxy5onh"]
 
 [ext_resource type="Texture2D" uid="uid://bo3lhrqk53dby" path="res://images/car.png" id="1_c35m8"]
 [ext_resource type="Script" uid="uid://viy2xtmm80wb" path="res://scripts/car.gd" id="1_qt2eu"]
+[ext_resource type="Texture2D" uid="uid://b0uqurrlfpy1" path="res://images/car_blue.png" id="3_cp117"]
+[ext_resource type="Texture2D" uid="uid://dr8xbvot6q8ha" path="res://images/car_geen.png" id="4_4clw4"]
+[ext_resource type="Texture2D" uid="uid://c854a53r1qphs" path="res://images/car_magenta.png" id="5_ctevm"]
+[ext_resource type="Texture2D" uid="uid://3bh5o1keef7c" path="res://images/car_yellow.png" id="6_uraa1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5newe"]
 radius = 18.0
@@ -14,9 +18,29 @@ height = 86.0
 [node name="Car" type="CharacterBody2D"]
 script = ExtResource("1_qt2eu")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Red" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_c35m8")
+
+[node name="Blue" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_cp117")
+
+[node name="Green" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_4clw4")
+
+[node name="Magenta" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_ctevm")
+
+[node name="Yellow" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_uraa1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_5newe")
